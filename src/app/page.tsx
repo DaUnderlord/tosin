@@ -106,11 +106,11 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             {/* Image Side */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="relative h-[400px] md:h-[600px] w-full rounded-lg overflow-hidden order-2 lg:order-1"
+              className="relative h-[400px] md:h-[600px] w-full rounded-lg overflow-hidden order-2 lg:order-2"
             >
               <Image
                 src={StandardImage}
@@ -127,7 +127,7 @@ export default function Home() {
             </motion.div>
 
             {/* Content Side */}
-            <div className="order-1 lg:order-2">
+            <div className="order-1 lg:order-1">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
