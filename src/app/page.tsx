@@ -11,6 +11,37 @@ import { motion } from "framer-motion";
 
 import AboutImage from "@/assets/images/Raphautos brand identity 5.jpg"; // Billboard
 import FeatureImage from "@/assets/images/Raphautos brand identity 4.jpg"; // Tires/Abstract
+import StandardImage from "@/assets/images/Raphautos brand identity 2.jpg"; // Standard Section
+import FeaturedCar1 from "@/assets/images/featured_car_1.png";
+import FeaturedCar2 from "@/assets/images/featured_car_2.png";
+import FeaturedCar3 from "@/assets/images/featured_car_3.png";
+
+const FEATURED_CARS = [
+  {
+    id: 1,
+    name: "2024 Mercedes-Benz S-Class",
+    price: "$115,000",
+    image: FeaturedCar1,
+    specs: ["Automatic", "Hybrid", "1,200 miles"],
+    tag: "AVAILABLE"
+  },
+  {
+    id: 2,
+    name: "2024 Range Rover Autobiography",
+    price: "$168,000",
+    image: FeaturedCar2,
+    specs: ["Automatic", "Petrol", "500 miles"],
+    tag: "RESERVED"
+  },
+  {
+    id: 3,
+    name: "2023 Porsche 911 Carrera S",
+    price: "$145,000",
+    image: FeaturedCar3,
+    specs: ["PDK", "Petrol", "3,500 miles"],
+    tag: "AVAILABLE"
+  }
+];
 
 export default function Home() {
   return (
@@ -67,49 +98,78 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services / Features Section */}
-      <section className="py-32 bg-zinc-950 px-4 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-900/20 via-black to-black pointer-events-none" />
-        <div className="mx-auto max-w-7xl relative z-10">
-          <div className="text-center mb-24">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-4xl md:text-5xl font-bold mb-6"
-            >
-              The Raphautos Standard
-            </motion.h2>
-            <p className="text-zinc-500 text-lg max-w-2xl mx-auto">Excellence is not just a goal; it's our baseline.</p>
-          </div>
+      {/* Services / Features Section - The Raphautos Standard */}
+      <section className="py-24 md:py-32 bg-zinc-950 px-4 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-zinc-900/40 via-black to-black pointer-events-none" />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {[
-              { icon: ShieldCheck, title: "Certified Quality", desc: "Every vehicle undergoes a rigorous 150-point inspection to ensure it meets our uncompromising standards." },
-              { icon: Star, title: "Premium Experience", desc: "From the moment you step into our showroom to the day you drive off, we provide white-glove service." },
-              { icon: Wrench, title: "After-Sales Support", desc: "Our relationship doesn't end at the sale. We offer comprehensive maintenance and support packages." }
-            ].map((feature, i) => (
+        <div className="mx-auto max-w-7xl relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Image Side */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative h-[400px] md:h-[600px] w-full rounded-lg overflow-hidden order-2 lg:order-1"
+            >
+              <Image
+                src={StandardImage}
+                alt="The Raphautos Standard"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-1000"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 max-w-xs">
+                <p className="text-white text-lg font-medium leading-tight">
+                  "Excellence is not just a goal; it's our baseline."
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Content Side */}
+            <div className="order-1 lg:order-2">
               <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.2, duration: 0.5 }}
-                className="group rounded-xl border border-zinc-800 bg-zinc-900/30 px-4 py-4 sm:px-5 sm:py-5 md:px-6 md:py-6 hover:bg-zinc-900/50 hover:border-zinc-700 transition-all duration-500"
+                className="mb-12"
               >
-                <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="mt-0.5 h-9 w-9 sm:h-10 sm:w-10 md:h-11 md:w-11 flex-none rounded-full bg-zinc-900 flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition-colors">
-                    <feature.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-base sm:text-lg md:text-xl font-semibold mb-1 sm:mb-2">{feature.title}</h3>
-                    <p className="text-xs sm:text-sm md:text-[15px] text-zinc-400 leading-relaxed group-hover:text-zinc-300 transition-colors">
-                      {feature.desc}
-                    </p>
-                  </div>
-                </div>
+                <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
+                  The Raphautos<br />
+                  <span className="text-zinc-600">Standard.</span>
+                </h2>
+                <p className="text-zinc-400 text-lg leading-relaxed">
+                  We don't just sell cars; we curate experiences. Our standard is defined by an unwavering commitment to quality, transparency, and personalized service.
+                </p>
               </motion.div>
-            ))}
+
+              <div className="space-y-6">
+                {[
+                  { icon: ShieldCheck, title: "Certified Quality", desc: "Every vehicle undergoes a rigorous 150-point inspection to ensure it meets our uncompromising standards." },
+                  { icon: Star, title: "Premium Experience", desc: "From the moment you step into our showroom to the day you drive off, we provide white-glove service." },
+                  { icon: Wrench, title: "After-Sales Support", desc: "Our relationship doesn't end at the sale. We offer comprehensive maintenance and support packages." }
+                ].map((feature, i) => (
+                  <motion.div
+                    key={feature.title}
+                    initial={{ opacity: 0, x: 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.2, duration: 0.5 }}
+                    className="flex gap-4 group"
+                  >
+                    <div className="mt-1 h-12 w-12 flex-none rounded-full bg-zinc-900/50 border border-zinc-800 flex items-center justify-center text-zinc-400 group-hover:bg-white group-hover:text-black group-hover:border-white transition-all duration-300">
+                      <feature.icon className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold mb-2 text-white group-hover:text-zinc-300 transition-colors">{feature.title}</h3>
+                      <p className="text-zinc-500 leading-relaxed group-hover:text-zinc-400 transition-colors">
+                        {feature.desc}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -128,10 +188,11 @@ export default function Home() {
           </div>
 
           {/* Mock Grid - Replace with dynamic component later */}
+          {/* Dynamic Grid with Real Images */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
+            {FEATURED_CARS.map((car, i) => (
               <motion.div
-                key={i}
+                key={car.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -139,26 +200,29 @@ export default function Home() {
                 className="group relative cursor-pointer"
               >
                 <div className="aspect-[4/3] bg-zinc-900 relative overflow-hidden rounded-sm mb-6">
-                  {/* Placeholder for car images */}
-                  <div className="absolute inset-0 flex items-center justify-center text-zinc-700 font-mono text-sm group-hover:scale-105 transition-transform duration-700">
-                    Vehicle Image
-                  </div>
+                  <Image
+                    src={car.image}
+                    alt={car.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500" />
                   <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full text-xs font-medium text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    AVAILABLE
+                    {car.tag}
                   </div>
                 </div>
                 <div>
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-2xl font-bold text-white group-hover:text-zinc-300 transition-colors">202{i} Luxury Model X</h3>
-                    <span className="text-xl font-medium text-zinc-400">$45,000</span>
+                    <h3 className="text-xl font-bold text-white group-hover:text-zinc-300 transition-colors line-clamp-1">{car.name}</h3>
+                    <span className="text-lg font-medium text-zinc-400">{car.price}</span>
                   </div>
                   <p className="text-zinc-500 text-sm mb-4 flex gap-3">
-                    <span>Automatic</span>
-                    <span className="text-zinc-700">•</span>
-                    <span>Petrol</span>
-                    <span className="text-zinc-700">•</span>
-                    <span>5,000 miles</span>
+                    {car.specs.map((spec, index) => (
+                      <span key={index} className="flex items-center gap-2">
+                        {spec}
+                        {index < car.specs.length - 1 && <span className="text-zinc-700">•</span>}
+                      </span>
+                    ))}
                   </p>
                   <div className="w-full h-px bg-zinc-900 group-hover:bg-zinc-800 transition-colors" />
                 </div>
